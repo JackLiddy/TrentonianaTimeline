@@ -1,0 +1,97 @@
+Script started on 2021-04-11 18:52:44-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;lion@UbuntuMATE: ~/Desktop[01;32mlion@UbuntuMATE[00m:[01;34m~/Desktop[00m$ psql [K[K[K[K[KcreateD[Kdb testTimeline
+]0;lion@UbuntuMATE: ~/Desktop[01;32mlion@UbuntuMATE[00m:[01;34m~/Desktop[00m$ psql testTimeline
+psql (12.6 (Ubuntu 12.6-0ubuntu0.20.04.1))
+Type "help" for help.
+
+testTimeline=# \i Script.sql
+CREATE TABLE
+INSERT 0 3
+            username            | password | privileges 
+--------------------------------+----------+------------
+ chrissmith42                   | lion3    | admin
+ jackliddy5                     | windows5 | admin
+ guest46                        | linux3   | guest
+(3 rows)
+
+CREATE TABLE
+INSERT 0 3
+              name              |    date    |  size   |                            link                            
+--------------------------------+------------+---------+------------------------ -----------------------------------
+ JHS 25                         | 1994-12-21 | 43.2 MB | https://archive.org/det ails/JHS25SideA/JHS+25-+side+A.mp3
+ JHS 33                         | 1997-07-17 | 43.4 MB | https://archive.org/det ails/JHS57SideA
+ JHS 46                         | 1997-03-03 | 35.5 MB | https://archive.org/det ails/JHS46SideA
+(3 rows)
+INSERT 0 3
+              name              | numoffiles 
+--------------------------------+------------
+ History of Trenton             | 75
+ Jewish History                 | 65
+ Oral History                   | 66
+(3 rows)
+
+CREATE TABLE
+INSERT 0 3
+          timelinename          | audiofilename 
+--------------------------------+---------------
+ History of Trenton             | JHS 49
+ Oral History                   | JHS 59
+ Jewish History                 | JHS 59
+(3 rows)
+
+CREATE TABLE
+INSERT 0 3
+            username            | audiofilename 
+--------------------------------+---------------
+ chrissmith42                   | JHS 49
+ jackliddy5                     | JHS 59
+ guest46                        | JHS 33
+(3 rows)
+
+CREATE TABLE
+INSERT 0 3
+            username            |    timelinename    
+--------------------------------+--------------------
+ chrissmith42                   | History of Trenton
+ jackliddy5                     | Jewish History
+ guest46                        | Jewish History
+(3 rows)
+
+testTimeline=# \i queries.sql
+CREATE VIEW
+              name              |    date    |  size   |                            link                            
+--------------------------------+------------+---------+------------------------ -----------------------------------
+ JHS 25                         | 1994-12-21 | 43.2 MB | https://archive.org/det ails/JHS25SideA/JHS+25-+side+A.mp3
+ JHS 46                         | 1997-03-03 | 35.5 MB | https://archive.org/det ails/JHS46SideA
+ JHS 33                         | 1997-07-17 | 43.4 MB | https://archive.org/det ails/JHS57SideA
+(3 rows)
+CREATE VIEW
+            username            | password | privileges 
+--------------------------------+----------+------------
+ chrissmith42                   | lion3    | admin
+ jackliddy5                     | windows5 | admin
+(2 rows)
+
+CREATE VIEW
+            username            | password | privileges 
+--------------------------------+----------+------------
+ guest46                        | linux3   | guest
+(1 row)
+
+            username            |  timelinename  
+--------------------------------+----------------
+ jackliddy5                     | Jewish History
+ guest46                        | Jewish History
+(2 rows)
+
+CREATE VIEW
+            username            | audiofilename 
+--------------------------------+---------------
+ chrissmith42                   | JHS 49
+(1 row)
+
+testTimeline=# exit
+]0;lion@UbuntuMATE: ~/Desktop[01;32mlion@UbuntuMATE[00m:[01;34m~/Desktop[00m$ exit
+exit
+
+Script done on 2021-04-11 18:54:35-04:00 [COMMAND_EXIT_CODE="0"]
