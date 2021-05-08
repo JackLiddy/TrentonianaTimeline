@@ -1,0 +1,120 @@
+<!-- /templates/timeline.html-->
+
+ <!-- Bootstrap Import -->
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+              
+<html>
+    <head>
+    
+        <title>timeline</title>
+        <link href="/static/dist/css/timeline.min.css" rel="stylesheet" />
+    </head>
+
+    <!-- Adding some style to table (OPTIONAL) -->
+    <style type="text/css">
+
+
+    th:tr{
+        color: blue;
+    }
+    tr:nth-of-type(2n){
+        border: 1px solid black;
+        background-color: rgba(150, 150, 150, 0.5);
+    }
+
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+    
+    body {
+        background-color: #3AAFA9;
+        }
+    h3 {
+        color: white;
+        font-size: 50px;
+        }    
+    </style>
+
+    <body>
+    
+
+        <script>
+
+            //document.getElementById("demo").innerHTML = "My Javascript";
+            //var loc = window.location.pathname;
+            //var dir = loc.substring(0, loc.lastIndexOf('/'))
+            //document.getElementById("demo").innerHTML = loc + "123";
+        </script>
+    
+         <div class="jumbotron text-center" style="background-color:#2B7A78">
+            <h3>Trentoniana Timeline</h3>
+	        <h2>Timeline</h2>
+	    </div>       
+ 
+     <div class="container" style="background-color:#3AAFA9">	
+
+        <div class="timeline">
+          <div class="timeline__wrap">
+            <div class="timeline__items">
+                       
+             <!-- nested for loops in jinja template -->
+
+	        {%for row in rows%}
+	            {%set outer_loop = loop%}
+
+	                     
+                {% if loop.index % 2 == 0 %}
+	            <div class="timeline__item timeline__item--right fadeIn">
+	            {% else %}
+	            <div class="timeline__item timeline__item--left fadeIn">
+	           {% endif %} 
+	            
+	            <div class="timeline__content">
+	            {%for col in row%}
+
+	                    {% if loop.index == 4 %}
+	                    
+	                    
+<iframe src="{{col}}" width="500" height="140" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>	                    
+	                    
+	                        	                    
+	                    {% else %}
+                        
+	                        <p class = "text-center">{{col}}</p>
+	                        
+	                        
+	                    {% endif %} 
+	                    
+	                
+	            {%endfor%}
+	            </div>
+	            </div>
+	        {%endfor%}              
+            </div>
+          </div>
+        </div> 
+    </div>       
+        
+         
+               
+        <script>
+            //initialize timeline
+            timeline(document.querySelectorAll('.timeline'), {
+              verticalStartPosition: 'left',
+              verticalTrigger: '150px'
+            });
+        </script>
+        
+        <script src="/static/dist/js/timeline.min.js"></script>
+        
+    </body>
+
+</html>
